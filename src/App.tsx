@@ -1,10 +1,7 @@
 import React from 'react';
-import 'spectre.css';
-
 import Routes from './routes'
 
 function App() {
-
   return <Routes />
 }
 
