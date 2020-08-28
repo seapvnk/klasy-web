@@ -15,8 +15,12 @@ const Navbar: React.FC<NavbarProps> = props => {
         fontSize: '1.4rem',
     }
 
+    const navbarStyle = {
+        height: '2.5rem',
+    }
+
     return(
-        <nav className="navbar container bg-primary">
+        <nav style={navbarStyle} className="navbar container bg-primary">
             <section className="navbar-section">
                 <span style={textLogo} className="navbar-brand mr-2 text-bold text-light">Klasy</span>
             </section>

@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 function Landing() {
 
   const fullscreen = {
+    padding: '0px',
+    margin: '0px',
     height: '100vh',
   };
   
@@ -23,6 +25,7 @@ function Landing() {
   return (
     <div style={fullscreen} className="bg-primary">
       <Navbar />
+
       <div className="container">
         <div style={pageBody}>
           <div className="hero">
