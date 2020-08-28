@@ -6,7 +6,7 @@ interface NavbarProps {
     backTo?: string
 }
 
-const Navbar: React.FC<NavbarProps> = props => {
+const Navbar: React.FC<NavbarProps> = (props) => {
     const textLogo = {
         fontSize: '1.2rem',
     }
@@ -18,14 +18,24 @@ const Navbar: React.FC<NavbarProps> = props => {
     const navbarStyle = {
         height: '2.5rem',
     }
-
+    
     return(
-        <nav style={navbarStyle} className="navbar container bg-primary">
-            <section className="navbar-section">
-                <span style={textLogo} className="navbar-brand mr-2 text-bold text-light">Klasy</span>
-            </section>
-            {!!props.backTo ? <Link style={backIconStyle} to={`${props.backTo}`} className="btn-link mr-2 text-light">&larr;</Link> : ""}
-        </nav>
+        <div className="div">
+
+            <nav style={navbarStyle} className="navbar container bg-primary">
+            
+                <section className="navbar-section">
+                    <span style={textLogo} className="navbar-brand mr-2 text-bold text-light">Klasy</span>
+                </section>
+                {!!props.backTo ? <Link style={backIconStyle} to={`${props.backTo}`} className="btn-link mr-2 text-light">&larr;</Link> : ""}
+                
+            </nav>
+            
+            <div className="container">
+                {props.children}
+            </div>
+
+        </div>
     );
 }
 
