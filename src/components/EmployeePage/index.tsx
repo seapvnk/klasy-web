@@ -16,13 +16,22 @@ const EmployeePage: React.FC<EmployeePageProps> = props => {
         height: '100vh',
     };
 
-    const whiteBackground = {
+    const separator = {
+        paddingTop: '24vh',
+    }
+
+    const employeePageTopBar = {
         backgroundColor: 'white',
+        width: '100%',
+        maxHeight: '22vh',
+        display: 'flex',
+        flexFlow: 'column',
+        justifyItems: 'flex-end'
     };
 
     return (
         <section style={fullscreen} className="bg-gray">
-            <div style={whiteBackground}>
+            <div style={employeePageTopBar} className="p-fixed">
                 <Navbar navbarLight={true}>
                     <Breadcrumb address={`${props.employeeType}/${props.currentSection?? ''}`} />
                 </Navbar>
@@ -48,8 +57,8 @@ const EmployeePage: React.FC<EmployeePageProps> = props => {
                     }
                 </ul>
             </div>
-
             <div className="container bg-gray">
+            <div style={separator}></div>
                 {props.children}
             </div>
             
