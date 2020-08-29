@@ -26,7 +26,8 @@ const EmployeePage: React.FC<EmployeePageProps> = props => {
         maxHeight: '22vh',
         display: 'flex',
         flexFlow: 'column',
-        justifyItems: 'flex-end'
+        justifyItems: 'flex-end',
+        zIndex: 2,
     };
 
     return (

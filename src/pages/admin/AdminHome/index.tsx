@@ -40,7 +40,8 @@ function AdminHome() {
             <h2 className="text-primary">Área administrativa</h2>
             <div className="card">
                 <div style={chartStyle.container} className="card-image">
-                    <img 
+                    <img
+                        alt="admin chart"
                         src={chartApiRequest} 
                         style={chartStyle.image}
                     />
