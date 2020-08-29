@@ -3,6 +3,7 @@ import 'spectre.css'
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
+    navbarLight?: boolean;
     backTo?: string
 }
 
@@ -17,15 +18,16 @@ const Navbar: React.FC<NavbarProps> = (props) => {
 
     const navbarStyle = {
         height: '2.5rem',
+        backgroundColor: !!props.navbarLight? 'white': 'initial',
     }
     
     return(
         <div className="div">
 
-            <nav style={navbarStyle} className="navbar container bg-primary">
+            <nav style={navbarStyle} className={`navbar container ${props.navbarLight?? "bg-primary"}`}>
             
                 <section className="navbar-section">
-                    <span style={textLogo} className="navbar-brand mr-2 text-bold text-light">Klasy</span>
+                    <span style={textLogo} className={`navbar-brand mr-2 text-bold ${!!props.navbarLight? "text-primary" : "text-light"}`}>Klasy</span>
                 </section>
                 {!!props.backTo ? <Link style={backIconStyle} to={`${props.backTo}`} className="btn-link mr-2 text-light">&larr;</Link> : ""}
                 

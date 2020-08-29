@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 interface BreadcrumbProps {
     address: string
@@ -12,7 +11,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = props => {
                 props.address.split('/').map(subsection => {
                     return (
                         <li key={`li-${subsection}`} className="breadcrumb-item">
-                            <Link to={subsection}>{subsection}</Link>
+                            {subsection}
                         </li>
                     );
                 })
