@@ -1,4 +1,6 @@
 import React from 'react';
+import Modal from '../Modal';
+import AdminUserOptionsModal from '../AdminUserOptionsModal';
 
 enum ProfileType {
     Professor,
@@ -79,6 +81,8 @@ const ProfileCard: React.FC<ProfileCardProps> = props => {
     const profilePicAPI = 'https://avatars.dicebear.com/api';
     const profilePicAPIGender = handleAPIGender(gender);
     const profilePicAPIName = username.replace(' ', '-');
+    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${profilePicAPIName}.svg`;
+    const profileAdorn = createProfileBadgeStyle(profileType);
 
     return (
         <div style={profileTileStyle} className="tile">
@@ -87,19 +91,25 @@ const ProfileCard: React.FC<ProfileCardProps> = props => {
                     <figure className="avatar avatar-xl bg-gray" data-initial={nameInitials}>
                         <img 
                             className="bg-gray"
-                            src={`${profilePicAPI}/${profilePicAPIGender}/${profilePicAPIName}.svg`} 
+                            src={userProfileURL} 
                             alt={profilePicAPIName}
                         />    
                     </figure>
                 </div>
             </div>
             <div className="tile-content">
-                <p className="tile-title"><span className="text-bold">{username}</span> {createProfileBadgeStyle(profileType)}</p>
+                <p className="tile-title"><span className="text-bold">{username}</span> {profileAdorn}</p>
                 <p className="tile-subtitle">{bio}</p>
                 <div className="tile-action">
                     <button className="btn btn-primary">Ver perfil</button>
                     <span style={{marginRight: '5px'}}></span>
-                    <button className="btn">Opções</button>
+                    <AdminUserOptionsModal 
+                        username={username}
+                        bio={bio}
+                        profilePictureURL={userProfileURL}
+                        nameInitials={nameInitials}
+                        adorn={profileAdorn}
+                    />
                 </div>
             </div>
             <div className="divider"></div>
