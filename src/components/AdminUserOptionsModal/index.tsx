@@ -26,11 +26,11 @@ const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = props => {
                 <li className="menu-item tile-content">
                     <h3>{username}</h3>
                     <p>tipo: {adorn}</p>
+
                     descrição: 
                     <div style={{marginBottom: '15px'}}>{bio}</div>
                     
                     <div className="divider"></div>
-
                     <button style={{border: 'none', marginRight: '5px'}} className="btn bg-warning">Editar</button>
                     <button className="btn btn-error">Excluir</button>
                 </li>

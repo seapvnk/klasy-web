@@ -1,10 +1,15 @@
 import React from 'react';
+
 import AdminPage from '../../../components/AdminPage';
 import ProfileCard from '../../../components/ProfileCard';
+import AdminSearchBar from '../../../components/AdminSearchBar';
 
 function AdminManagePeople() {
     return(
         <AdminPage adminSection="Pessoas">
+
+            <AdminSearchBar />
+
             <ProfileCard
                 username="Pedro"
                 gender="M"
