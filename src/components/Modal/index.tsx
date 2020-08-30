@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 interface ModalProps {
-    title: string;
+    title?: string;
     openModalButtonTitle: string;
 }
 
 const Modal: React.FC<ModalProps> = props => {
-    const {title, openModalButtonTitle, children} = props;
+    const {openModalButtonTitle, children} = props;
+    const title = props.title?? '';
     const [modalOpen, setModalOpen] = useState(false);
 
     return(
