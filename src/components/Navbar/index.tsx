@@ -30,7 +30,13 @@ const Navbar: React.FC<NavbarProps> = (props) => {
                 <section className="navbar-section">
                     <span style={textLogo} className={`navbar-brand mr-2 text-bold ${!!props.navbarLight? "text-primary" : "text-light"}`}>Klasy</span>
                 </section>
-                {!!props.backTo ? <Link style={backIconStyle} to={`${props.backTo}`} className="btn-link mr-2 text-light"><BsArrowLeft /></Link> : ""}
+                
+                {
+                    !!props.backTo ? 
+                    <Link style={backIconStyle} to={`${props.backTo}`} className="btn-link mr-2 text-light">
+                        <BsArrowLeft />
+                    </Link> : ""
+                }
                 
             </nav>
             
