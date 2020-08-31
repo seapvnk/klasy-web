@@ -7,9 +7,7 @@ import AdminSearchBar from '../../../components/AdminSearchBar';
 function AdminManagePeople() {
     return(
         <AdminPage adminSection="Pessoas">
-
             <AdminSearchBar />
-
             <ProfileCard
                 username="Pedro"
                 gender="M"

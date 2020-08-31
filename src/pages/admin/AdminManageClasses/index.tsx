@@ -1,12 +1,12 @@
 import React from 'react';
 import AdminPage from '../../../components/AdminPage';
 
-function AdminHome() {
+function AdminManageClasses() {
     return(
-        <AdminPage>
+        <AdminPage adminSection="Turmas">
             There's no place like home.
         </AdminPage>
     );
 }
 
-export default AdminHome;
+export default AdminManageClasses;
