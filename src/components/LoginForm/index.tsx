@@ -2,20 +2,17 @@ import React from 'react';
 import 'spectre.css';
 
 import Navbar from '../Navbar';
+import Form, {FormFields} from '../Form';
 import { Link } from 'react-router-dom';
 
 interface LoginFormProps {
   title: string;
-  fields: Array<{
-    label: string;
-    placeholder?: string;
-    name: string;
-  }>
+  fields: Array<FormFields>
   subtitle?: string;
   signUpPage?: boolean;
 }
 
-const LoginForm: React.FC<LoginFormProps> = props => {
+const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPage }) => {
 
   const fullscreen = {
     height: '100vh',
@@ -41,34 +38,17 @@ const LoginForm: React.FC<LoginFormProps> = props => {
       <Navbar backTo="/" />
       <div className="container">
           <div style={pageBody}>
-            <h1 style={textLarge}>{props.title}</h1>
-            <p className="text-muted">{props.subtitle}</p>
-            <form style={formStyle}>
-
-              {
-                props.fields.map(field => {
-                  return (
-                    <div className="form-group" key={`${props.title.replace(' ', '_')}-${field.name}`}>
-                      <label 
-                          className="form-label"
-                          htmlFor={`${props.title.replace(' ', '-')}-${field.name}`}
-                      >
-                        {field.label}
-                      </label>
-                      <input
-                        className="form-input"
-                        type="text"
-                        id={`${props.title.replace(' ', '-')}-${field.name}`} 
-                        placeholder={field.placeholder?? field.label}
-                      />
-                    </div>
-                  ); 
-                })
-              }
-              
-              <button className="btn btn-success btn-lg">{!props.signUpPage? "Entrar" : "Cadastrar"}</button>
-            </form>
-            {!props.signUpPage? <Link to="/cadastro" className="text-light">Não possuo login.</Link> : ""}
+            <h1 style={textLarge}>{title}</h1>
+            <p className="text-muted">{subtitle}</p>
+            
+            <Form 
+              buttonMessage={!signUpPage? "Entrar" : "Cadastrar"}
+              fields={fields}
+              styles={formStyle}
+            />
+          
+            {!signUpPage? <Link to="/cadastro" className="text-light">Não possuo login.</Link> : ""}
+          
           </div>
         </div>
     </div>
