@@ -1,4 +1,7 @@
 import React from 'react';
+import Modal from '../Modal';
+import Form from '../Form';
+import AdminUserOptionsModal from '../AdminUserOptionsModal';
 
 interface ClassItemProps {
     title: string;
@@ -8,10 +11,7 @@ interface ClassItemProps {
 
 const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) => {
     return (
-        <div className="card" style={{maxWidth: '400px'}}>
-            <div className="card-image" style={{maxWidth: '100%'}}>
-                <img src="http://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png" className="img-responsive" />
-            </div>
+        <div className="card" style={{maxWidth: '100%', marginBottom: '1rem'}}>
             <div className="card-header">
                 <div className="card-title h5">{ title }</div>
                 <div className="card-subtitle text-gray">{ subtitle ?? '' }</div>
@@ -20,8 +20,26 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
                 {description ?? ''}
             </div>
             <div className="card-footer">
-                <button className="btn btn-primary"style={{marginRight: '5px'}}>Novo professor</button>
-                <button className="btn btn-success">Opções</button>
+                <Modal
+                    title={`Inserir professor na turma "${title}"`}
+                    openModalButtonTitle="Novo professor"
+                    openModalButtonClass="primary"
+                >
+                    <Form
+                        fields={[
+                            {label: 'Professor', placeholder: 'nome',  name: 'materia'}
+                        ]}
+                        buttonMessage="Novo professor"
+                    />
+                </Modal>
+                <span style={{marginRight: '5px'}}></span>
+                <Modal
+                    title={`Ações na turma "${title}"`}
+                    openModalButtonTitle="Opções"
+                >
+                    -- TODO
+                    Make Class item option
+                </Modal>
             </div>
         </div>
     );
