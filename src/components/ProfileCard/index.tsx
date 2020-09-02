@@ -67,8 +67,8 @@ const ProfileCard: React.FC<ProfileCardProps> = props => {
     const profileTileStyle = {
         backgroundColor: '#fff',
         borderRadius: '4px',
+        border: '1px solid #33333333',
         padding: '10px',
-        boxShadow: '6px 6px 6px 1px rgba(0,0,0,0.05)',
         margin: '1.5rem 0px',
     }
 
