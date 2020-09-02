@@ -10,9 +10,10 @@ interface FormProps {
     fields: Array<FormFields>;
     buttonMessage: string;
     styles?: CSSProperties;
+    buttonMessageSubmitButtonColor?: string;
 }
 
-const Form: React.FC<FormProps> = ({buttonMessage, fields, styles}) => {
+const Form: React.FC<FormProps> = ({buttonMessage, fields, styles, buttonMessageSubmitButtonColor}) => {
     return (
             <form style={styles?? {} }>
               {
@@ -35,7 +36,7 @@ const Form: React.FC<FormProps> = ({buttonMessage, fields, styles}) => {
                 })
               }
               
-              <button className="btn btn-success btn-lg">{buttonMessage}</button>
+              <button className={`btn btn-${buttonMessageSubmitButtonColor?? 'success'} btn-lg`}>{ buttonMessage }</button>
 
             </form>
     );
