@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 interface ModalProps {
     title?: string;
     openModalButtonTitle: string;
+    openModalButtonClass?: string;
 }
 
-const Modal: React.FC<ModalProps> = props => {
-    const {openModalButtonTitle, children} = props;
-    const title = props.title?? '';
+const Modal: React.FC<ModalProps> = ({ openModalButtonTitle, title, openModalButtonClass, children }) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     return(
         <div style={{display: 'inline', zIndex: 1}}>
-            <button className="btn" onClick={() => setModalOpen(true)}>{openModalButtonTitle}</button>
+            <button className={`btn btn-${ openModalButtonClass }`} onClick={() => setModalOpen(true)}>{openModalButtonTitle}</button>
 
             <div className={`modal ${modalOpen? 'active' : ''}`} id={`modal-${title}`}>
                 <span onClick={() => setModalOpen(false)} className="modal-overlay" aria-label="Close"></span>
