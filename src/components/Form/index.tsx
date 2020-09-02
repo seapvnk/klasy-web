@@ -28,6 +28,7 @@ const Form: React.FC<FormProps> = ({buttonMessage, fields, styles, buttonMessage
                       <input
                         className="form-input"
                         type="text"
+                        name={name}
                         id={`i-${index}`} 
                         placeholder={placeholder?? label}
                       />
