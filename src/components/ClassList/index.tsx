@@ -1,6 +1,11 @@
 import React from 'react';
+import Pagination from '../Pagination';
 
-function ClassList(props: { children: React.ReactNode; }) {
+interface ClassListProps {
+    todo?: string;
+}
+
+const ClassList: React.FC<ClassListProps> = ({ children }) => {
     const classListStyle = {
         marginTop: '1rem',
         maxWidth: '100%',
@@ -8,7 +13,8 @@ function ClassList(props: { children: React.ReactNode; }) {
 
     return (
         <div style={classListStyle} className="container">
-            {props.children}
+            {children}
+            <Pagination link="turmas" numberOfPages={6} />
         </div>
     );
 }
