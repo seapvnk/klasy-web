@@ -2,6 +2,7 @@ import React from 'react';
 import Pagination from '../Pagination';
 import { ClassItemProps } from '../ClassItem';
 import ClassItem from '../ClassItem';
+import { useParams } from 'react-router-dom';
 
 interface ClassListProps {
     classes: Array<ClassItemProps>;
@@ -12,6 +13,9 @@ const ClassList: React.FC<ClassListProps> = ({ classes }) => {
         marginTop: '1rem',
         maxWidth: '100%',
     };
+
+    const params = useParams<{page: string}>();
+    const page = parseInt(params.page);
 
     return (
         <div style={classListStyle} className="container">
@@ -27,7 +31,7 @@ const ClassList: React.FC<ClassListProps> = ({ classes }) => {
                     )
                 })
             }
-            <Pagination link="turmas" numberOfPages={6} />
+            <Pagination link="Admin/turmas" currentPage={page} numberOfPages={6} />
         </div>
     );
 }

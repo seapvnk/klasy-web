@@ -1,55 +1,33 @@
 import React from 'react';
 import AdminPage from '../../../components/AdminPage';
-import Form from '../../../components/Form';
-import ClassItem from '../../../components/ClassItem';
 import ClassList from '../../../components/ClassList';
+import ClassesAdminMenu from '../../../components/ClassesAdminMenu';
 
 function AdminManageClasses() {
     return(
         <AdminPage adminSection="Turmas">
-            <div className="columns">
-                <div className="column col-6">
-                    <h3 className="text-success">Criar nova turma</h3>
-                    <Form
-                        buttonMessage="Criar nova turma"
-                        fields={[
-                            {placeholder: "Nome da turma", label: "", name: "cname"},
-                        ]} 
-                    />
-                </div>
-                    <div className="column col-6">
-                    <h3 className="text-primary">Buscar turma</h3>
-                    <Form
-                        buttonMessage="Buscar"
-                        buttonMessageSubmitButtonColor="primary"
-                        fields={[
-                            {placeholder: "Nome da turma", label: "",  name: "tname"},
-                        ]} 
-                    />
-                </div>
-            </div>
-            <ClassList>
-                <ClassItem 
-                    title="Typescript and React"
-                    subtitle="React e typescript, muito bom mesmo!"
-                    description="Aula de React no front-end utilizando typescript ministrada pelos professores..."
-                />
-                <ClassItem 
-                    title="Typescript and React"
-                    subtitle="React e typescript, muito bom mesmo!"
-                    description="Aula de React no front-end utilizando typescript ministrada pelos professores..."
-                />
-                <ClassItem 
-                    title="Typescript and React"
-                    subtitle="React e typescript, muito bom mesmo!"
-                    description="Aula de React no front-end utilizando typescript ministrada pelos professores..."
-                />
-                <ClassItem 
-                    title="Typescript and React"
-                    subtitle="React e typescript, muito bom mesmo!"
-                    description="Aula de React no front-end utilizando typescript ministrada pelos professores..."
-                />
-            </ClassList>
+            <ClassesAdminMenu />
+
+            <ClassList
+                classes={[
+                    {
+                        title: "React & Typescript", 
+                        subtitle: "Learn React & Typescript",
+                        description: "Coding React with Typescript.",
+                    },
+                    {
+                        title: "Typescript the right way", 
+                        subtitle: "Practice typescript",
+                        description: "Know typescript fundamentals.",
+                    },
+                    {
+                        title: "C Basic to Advance", 
+                        subtitle: "Learn C fundamentals",
+                        description: "Learn C for desktop applications & embedded systems.",
+                    },
+                ]}
+            />
+                
         </AdminPage>
     );
 }

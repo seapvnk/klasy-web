@@ -10,7 +10,7 @@ function AdminRoutes() {
         <BrowserRouter>
             <Route exact path='/admin' component={AdminHome}/>
             <Route exact path='/admin/pessoas' component={AdminManagePeople}/>
-            <Route exact path='/admin/turmas' component={AdminManageClasses}/>
+            <Route path='/admin/turmas/:page?' component={AdminManageClasses}/>
         </BrowserRouter>
     );
 }
