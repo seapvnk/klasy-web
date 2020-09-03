@@ -44,4 +44,5 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
     );
 }
 
+export type { ClassItemProps };
 export default ClassItem;
