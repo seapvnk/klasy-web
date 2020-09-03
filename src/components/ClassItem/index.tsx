@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from '../Modal';
 import Form from '../Form';
-import AdminUserOptionsModal from '../AdminUserOptionsModal';
 
 interface ClassItemProps {
     title: string;
