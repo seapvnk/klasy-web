@@ -116,4 +116,5 @@ const ProfileCard: React.FC<ProfileCardProps> = props => {
     );
 }
 
+export type { ProfileCardProps };
 export default ProfileCard;
