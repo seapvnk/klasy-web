@@ -7,7 +7,6 @@ interface AdminPageProps {
 
 const AdminPage: React.FC<AdminPageProps> = props => {
     const adminSections = [
-        "Home",
         "Pessoas",
         "Turmas",
         "Acesso"
