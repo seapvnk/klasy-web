@@ -1,0 +1,20 @@
+/** Scrollbar styles **/
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #5755d9 rgba(0,0,0,0);
+
+}
+
+*::-webkit-scrollbar {
+    width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #5755d9;
+    border: 3px solid rgba(0,0,0,0);
+}
