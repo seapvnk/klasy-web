@@ -3,49 +3,32 @@ import Navbar from '../Navbar';
 import Breadcrumb from '../Breadcrumb';
 import { Link } from 'react-router-dom';
 
+import styles from './styles';
+
 interface EmployeePageProps {
     employeeType: string;
     sections: Array<string>;
     currentSection?: string;
 }
 
-const EmployeePage: React.FC<EmployeePageProps> = props => {
-    const activeSection = props.currentSection?? props.sections[0];
-
-    const fullscreen = {
-        height: '100vh',
-    };
-
-    const separator = {
-        paddingTop: '24vh',
-    }
-
-    const employeePageTopBar = {
-        backgroundColor: 'white',
-        width: '100%',
-        maxHeight: '22vh',
-        display: 'flex',
-        flexFlow: 'column',
-        justifyItems: 'flex-end',
-        zIndex: 2,
-    };
-
+const EmployeePage: React.FC<EmployeePageProps> = ({ employeeType, sections, currentSection, children }) => {
+    const activeSection = currentSection?? sections[0];
     return (
-        <section style={fullscreen} className="bg-gray">
-            <div style={employeePageTopBar} className="p-fixed">
+        <section style={styles.fullscreen} className="bg-gray">
+            <div style={styles.employeePageTopBar} className="p-fixed">
                 <Navbar navbarLight={true}>
-                    <Breadcrumb address={`${props.employeeType}/${props.currentSection?? ''}`} />
+                    <Breadcrumb address={`${employeeType}/${currentSection?? ''}`} />
                 </Navbar>
 
                 <ul className="tab tab-block">
                     {
-                        props.sections.map(section => {
-                            const isCurrentSection = section !== props.sections[0];
-                            const employeeAreaHome = `/${props.employeeType}`;
-                            const employeeAreaTab = `/${props.employeeType}/${section.toLowerCase()}`;
+                        sections.map(section => {
+                            const isCurrentSection = section !== sections[0];
+                            const employeeAreaHome = `/${employeeType}/${sections[0]}`;
+                            const employeeAreaTab = `/${employeeType}/${section.toLowerCase()}`;
 
                             return (
-                                <li key={`li-${props.employeeType}-${section}`} className="tab-item">
+                                <li key={`li-${employeeType}-${section}`} className="tab-item">
                                     <Link 
                                         to={isCurrentSection ?  employeeAreaTab : employeeAreaHome}
                                         className={section === activeSection? 'active' : ''}
@@ -58,9 +41,11 @@ const EmployeePage: React.FC<EmployeePageProps> = props => {
                     }
                 </ul>
             </div>
+
             <div className="container bg-gray">
-            <div style={separator}></div>
-                {props.children}
+            
+            <div style={styles.separator}></div>
+                {children}
             </div>
             
         </section>
