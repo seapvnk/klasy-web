@@ -1,30 +1,40 @@
 import React from 'react';
 
 import AdminPage from '../../../components/AdminPage';
-import ProfileCard from '../../../components/ProfileCard';
 import AdminSearchBar from '../../../components/AdminSearchBar';
+import ProfileList from '../../../components/ProfileList';
 
 function AdminManagePeople() {
     return(
         <AdminPage adminSection="Pessoas">
             <AdminSearchBar />
-            <ProfileCard
-                username="Pedro"
-                gender="M"
-                bio="Programando, bebendo café e sendo muito chato o dia todinho..."
-                type="Professor"
-            />            
-            <ProfileCard
-                username="Rei da didática"
-                bio="PIPI POPOPO PIPI POPOPO, Eu falo e ninguem escuta!"
-                type="Professor"
-            />            
-            <ProfileCard
-                username="NeusaGOD666"
-                gender="F"
-                bio="Como muda o nome? Meu neto colocou esse nome do demônio???"
-                type="Aluno"
-            />            
+            <ProfileList
+                numberOfPages={6}
+                profiles={[
+                    {
+                        username: "Typescript GOD", 
+                        bio: "Teaching typescript since 1999",
+                        type: "Professor",
+                    },
+                    {
+                        username: "seapvnk", 
+                        bio: "Keep failing...",
+                        gender: 'male',
+                        type: "Aluno",
+                    },
+                    {
+                        username: "jsIsBad", 
+                        bio: "idk, just here 'cause js is bad",
+                        type: "Aluno",
+                    },
+                    {
+                        username: "Jannet Doe", 
+                        bio: "React teacher! I love to learn & code",
+                        gender: 'female',
+                        type: "Professor",
+                    },
+                ]}
+            />           
         </AdminPage>
     );
 }

@@ -9,6 +9,7 @@ function AdminManageClasses() {
             <ClassesAdminMenu />
 
             <ClassList
+                numberOfPages={3}
                 classes={[
                     {
                         title: "React & Typescript", 
