@@ -36,8 +36,22 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
                     title={`Ações na turma "${title}"`}
                     openModalButtonTitle="Opções"
                 >
-                    -- TODO
-                    Make Class item option
+                    <Modal
+                        title={`Editar "${title}"`}
+                        openModalButtonTitle="Editar"
+                        openModalButtonClass="link bg-warning text-light"
+                    >
+                        <Form
+                            buttonMessage="Salvar alterações"
+                            fields={[
+                                {label: 'Título', name: 'title', placeholder: 'Título da aula'},
+                                {label: 'Subtítulo', name: 'subtitle', placeholder: 'Subtítulo da aula'},
+                                {label: 'Descrição', name: 'description', placeholder: 'Breve descrição a respeito'},
+                            ]}
+                        />
+
+                    </Modal>
+                    <button style={{border: 'none', marginLeft: '5px'}} className="btn btn-error">Excluir</button>
                 </Modal>
             </div>
         </div>
