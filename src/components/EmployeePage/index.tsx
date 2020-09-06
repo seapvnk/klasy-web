@@ -20,7 +20,7 @@ const EmployeePage: React.FC<EmployeePageProps> = ({ employeeType, sections, cur
                     <Breadcrumb address={`${employeeType}/${currentSection?? ''}`} />
                 </Navbar>
 
-                <ul className="tab tab-block">
+                <ul style={{margin: 0}} className="tab tab-block">
                     {
                         sections.map(section => {
                             const isCurrentSection = section !== sections[0];
@@ -45,7 +45,7 @@ const EmployeePage: React.FC<EmployeePageProps> = ({ employeeType, sections, cur
             <div className="container bg-gray">
             
             <div style={styles.separator}></div>
-                {children}
+                { children }
             </div>
             
         </section>

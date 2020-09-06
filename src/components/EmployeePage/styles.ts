@@ -1,6 +1,7 @@
 const styles = {
     fullscreen: {
         height: '100vh',
+        backgroundColor: '#fff',
     },
     separator: {
         paddingTop: '24vh',
@@ -8,7 +9,6 @@ const styles = {
     employeePageTopBar: {
         backgroundColor: 'white',
         width: '100%',
-        maxHeight: '22vh',
         display: 'flex',
         flexFlow: 'column',
         justifyItems: 'flex-end',
