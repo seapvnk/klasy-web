@@ -2,8 +2,9 @@ import React, { CSSProperties } from 'react';
 
 interface FormFields {
     label: string;
-    placeholder?: string;
     name: string;
+    placeholder?: string;
+    value?: string;
 }
 
 interface FormProps {
@@ -17,7 +18,7 @@ const Form: React.FC<FormProps> = ({buttonMessage, fields, styles, buttonMessage
     return (
             <form style={styles?? {} }>
               {
-                fields.map(({name, label, placeholder}, index) => {
+                fields.map(({name, label, placeholder, value}, index) => {
                   return (
                     <div className="form-group" key={index}>
 
@@ -31,6 +32,7 @@ const Form: React.FC<FormProps> = ({buttonMessage, fields, styles, buttonMessage
                         name={name}
                         id={`i-${index}`} 
                         placeholder={placeholder?? label}
+                        value={value?? ''}
                       />
                     </div>
                   ); 
