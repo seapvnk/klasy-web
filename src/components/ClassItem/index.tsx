@@ -34,13 +34,11 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
                 <span style={{marginRight: '5px'}}></span>
                 <Modal
                     title={`Ações na turma "${title}"`}
-                    openModalButtonTitle="Opções"
-                >
+                    openModalButtonTitle="Opções" >
                     <Modal
                         title={`Editar "${title}"`}
                         openModalButtonTitle="Editar"
-                        openModalButtonClass="link bg-warning text-light"
-                    >
+                        openModalButtonClass="link bg-warning text-light" >
                         <Form
                             buttonMessage="Salvar alterações"
                             fields={[
