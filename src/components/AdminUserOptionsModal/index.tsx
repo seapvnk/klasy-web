@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react"
 import Modal from "../Modal"
+import Form from "../Form";
 
 interface AdminUserOptionsModalProps {
     username: string;
@@ -27,12 +28,25 @@ const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = props => {
                     <h3>{username}</h3>
                     <p>tipo: {adorn}</p>
 
-                    descrição: 
-                    <div style={{marginBottom: '15px'}}>{bio}</div>
+                    <div style={{marginBottom: '15px'}}>
+                        {bio}
+                    </div>
                     
                     <div className="divider"></div>
-                    <button style={{border: 'none', marginRight: '5px'}} className="btn bg-warning">Editar</button>
-                    <button className="btn btn-error">Excluir</button>
+                    <Modal
+                        title={`Editar "${username}"`}
+                        openModalButtonTitle="Editar"
+                        openModalButtonClass="link bg-warning text-light" >
+                        <Form
+                            buttonMessage="Salvar alterações"
+                            fields={[
+                                {label: 'Nome de usuário', name: 'username', placeholder: 'Nome de usuário', value: username},
+                                {label: 'Descriçao', name: 'Biografia', placeholder: 'Breve descrição', value: bio},
+                            ]}
+                        />
+
+                    </Modal>
+                    <button style={{marginLeft: '5px'}} className="btn btn-error">Excluir</button>
                 </li>
             </ul>
         </Modal>
