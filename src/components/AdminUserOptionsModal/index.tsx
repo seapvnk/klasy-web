@@ -1,17 +1,17 @@
 import React, { ReactElement } from "react"
 import Modal from "../Modal"
-import Form from "../Form";
+import Form, { FormSubmitProps } from "../Form";
 
 interface AdminUserOptionsModalProps {
     username: string;
     profilePictureURL: string;
     nameInitials: string;
     bio: string;
+    formSubmit: FormSubmitProps;
     adorn?: ReactElement;
 }
 
-const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = props => {
-    const {username, bio, adorn, profilePictureURL, nameInitials} = props;
+const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ username, bio, formSubmit, adorn, profilePictureURL, nameInitials }) => {
     return (
         <Modal openModalButtonTitle="Opções">
             <ul style={{listStyle: 'none'}} className="tile">
@@ -38,10 +38,11 @@ const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = props => {
                         openModalButtonTitle="Editar"
                         openModalButtonClass="link bg-warning text-light" >
                         <Form
+                            onSubmitForm={formSubmit}
                             buttonMessage="Salvar alterações"
                             fields={[
                                 {label: 'Nome de usuário', name: 'username', placeholder: 'Nome de usuário', value: username},
-                                {label: 'Descriçao', name: 'Biografia', placeholder: 'Breve descrição', value: bio},
+                                {label: 'Descriçao', name: 'bio', placeholder: 'Breve descrição', value: bio},
                             ]}
                         />
 

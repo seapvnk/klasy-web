@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AdminUserOptionsModal from '../AdminUserOptionsModal';
 import ProfileBadge from '../ProfileBadge';
 
@@ -22,13 +22,23 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }
         margin: '1.5rem 0px',
     }
 
-    const profileType = handleProfileType(type);
+    const getInitials = ( name: string ) => name.split(' ').map(name => name.charAt(0)).join('');
+    
+    const [ profileUsername, setUsername ] = useState(username);
+    const [ profileBio, setBio ] = useState(bio);
+    const [ nameInitials, setNameInitials ] = useState(getInitials(profileUsername));
 
-    const nameInitials = username.split(' ').map(name => name.charAt(0)).join('');
+    function handleEditing( [ username, bio ]: any ) {
+        setUsername(username);
+        setBio(bio)
+        setNameInitials(getInitials(profileUsername));
+    }
+
     const profilePicAPI = 'https://avatars.dicebear.com/api';
+    const profileType = handleProfileType(type);
     const profilePicAPIGender = handleAPIGender(gender ?? 'X');
-    const profilePicAPIName = username.replace(' ', '-');
-    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${profilePicAPIName}.svg`;
+    
+    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${profileUsername}.svg`;
 
     return (
         <div style={profileTileStyle} className="tile">
@@ -38,23 +48,27 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }
                         <img 
                             className="bg-gray"
                             src={userProfileURL} 
-                            alt={profilePicAPIName}
+                            alt={profileUsername}
                         />    
                     </figure>
                 </div>
             </div>
             <div className="tile-content">
                 <p className="tile-title">
-                    <span className="text-bold">{ username }</span>
+                    <span className="text-bold">{ profileUsername }</span>
                     <ProfileBadge type={profileType} /> 
                 </p>
-                <p className="tile-subtitle">{bio}</p>
+                <p className="tile-subtitle">{profileBio}</p>
                 <div className="tile-action">
                     <button className="btn btn-primary">Ver perfil</button>
                     <span style={{marginRight: '5px'}}></span>
-                    <AdminUserOptionsModal 
-                        username={username}
-                        bio={bio}
+                    <AdminUserOptionsModal
+                        formSubmit={{
+                            submitFunction: handleEditing,
+                            submitFunctionsArgs: ({ username: profileUsername, bio: profileBio }),
+                        }}
+                        username={profileUsername}
+                        bio={profileBio}
                         profilePictureURL={userProfileURL}
                         nameInitials={nameInitials}
                         adorn={( <ProfileBadge type={profileType} /> )}
