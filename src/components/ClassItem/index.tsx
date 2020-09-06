@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../Modal';
 import Form from '../Form';
+import AdminClassOptionsModal from '../AdminClassOptionsModal';
 
 interface ClassItemProps {
     title: string;
@@ -31,26 +32,14 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
                         buttonMessage="Novo professor"
                     />
                 </Modal>
-                <span style={{marginRight: '5px'}}></span>
-                <Modal
-                    title={`Ações na turma "${title}"`}
-                    openModalButtonTitle="Opções" >
-                    <Modal
-                        title={`Editar "${title}"`}
-                        openModalButtonTitle="Editar"
-                        openModalButtonClass="link bg-warning text-light" >
-                        <Form
-                            buttonMessage="Salvar alterações"
-                            fields={[
-                                {label: 'Título', name: 'title', placeholder: 'Título da aula'},
-                                {label: 'Subtítulo', name: 'subtitle', placeholder: 'Subtítulo da aula'},
-                                {label: 'Descrição', name: 'description', placeholder: 'Breve descrição a respeito'},
-                            ]}
-                        />
 
-                    </Modal>
-                    <button style={{border: 'none', marginLeft: '5px'}} className="btn btn-error">Excluir</button>
-                </Modal>
+                <span style={{marginRight: '5px'}}></span>
+                
+                <AdminClassOptionsModal
+                    title={title} 
+                    subtitle={subtitle ?? ''} 
+                    description={description ?? ''}
+                />
             </div>
         </div>
     );
