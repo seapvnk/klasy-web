@@ -3,17 +3,25 @@ import Modal from "../Modal"
 import Form, { FormSubmitProps } from "../Form";
 
 interface AdminUserOptionsModalProps {
+    id: number;
     username: string;
     profilePictureURL: string;
     nameInitials: string;
     bio: string;
     formSubmit: FormSubmitProps;
+    removeFunction?: Function;
     adorn?: ReactElement;
 }
 
-const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ username, bio, formSubmit, adorn, profilePictureURL, nameInitials }) => {
+const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ id, username, bio, formSubmit, adorn, profilePictureURL, nameInitials, removeFunction }) => {
+    function handleDeleteUser() {
+        if (removeFunction) {
+            removeFunction();
+        }
+    }
+    
     return (
-        <Modal openModalButtonTitle="Opções">
+        <Modal openModalButtonTitle="Opções" title={`Opções para o usuário ${username}`}>
             <ul style={{listStyle: 'none'}} className="tile">
                 <li className="menu-item">
                     <figure className="avatar avatar-xl bg-gray" data-initial={nameInitials}>
@@ -47,7 +55,7 @@ const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ username,
                         />
 
                     </Modal>
-                    <button style={{marginLeft: '5px'}} className="btn btn-error">Excluir</button>
+                    <button style={{marginLeft: '5px'}} className="btn btn-error" onClick={handleDeleteUser} >Excluir</button>
                 </li>
             </ul>
         </Modal>
