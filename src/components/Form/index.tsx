@@ -25,26 +25,29 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessageSubmitButtonColor, onSubmitForm }) => {
     const [ formValues, setFormValues ] = useState(fields);
-    function handleValueChange(index: number, newValue: string) {
-      const newValues = formValues.map((field, vindex) => {
-        if (index === vindex) {
-          field.value = newValue;
+    
+    // Handle submit function
+    function handleFormSubmit(event: any) {
+      event.preventDefault();
+      if (onSubmitForm) {
+        onSubmitForm.submitFunction(formValues.map(( { value }: FormFields) => value ));
+      }
+    }
+
+    // Update form state
+    function handleValueChange(index: number, updatedValue: string) {
+      setFormValues(formValues.map((field, fieldIndex) => {
+        if (index === fieldIndex) {
+          field.value = updatedValue;
         }
         return field;
-      });
-      setFormValues(newValues);
+      }));
     }
+
     return (
-            <form style={styles?? {} } onSubmit={
-                e => {
-                  e.preventDefault();
-                  if (onSubmitForm) {
-                    onSubmitForm.submitFunction(formValues.map(( { value }: FormFields) => value ));
-                  }
-                }
-              }>
+            <form style={styles?? {} } onSubmit={handleFormSubmit}>
               {
-                fields.map(({ name, label, placeholder, value }, index) => {
+                fields.map(({ name, label, placeholder }, index) => {
                   return (
                     <FormTextInput
                       key={index}

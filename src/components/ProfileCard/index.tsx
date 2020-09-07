@@ -22,22 +22,27 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }
         margin: '1.5rem 0px',
     }
 
+    // transform username in it's initials to create a placeholder in case of image fail to load
     const getInitials = ( name: string ) => name.split(' ').map(name => name.charAt(0)).join('');
     
+    // Component states, mutable by edit functionality in AdminUserOptionsModal
     const [ profileUsername, setUsername ] = useState(username);
     const [ profileBio, setBio ] = useState(bio);
     const [ nameInitials, setNameInitials ] = useState(getInitials(profileUsername));
 
-    function handleEditing( [ username, bio ]: any ) {
+    // Handle editing
+    type ProfileFormUpdate = any;
+    
+    function handleEditing( [ username, bio ]: ProfileFormUpdate  ) {
         setUsername(username);
         setBio(bio)
         setNameInitials(getInitials(profileUsername));
     }
 
+    // Profile Picture request, according username.
     const profilePicAPI = 'https://avatars.dicebear.com/api';
     const profileType = handleProfileType(type);
     const profilePicAPIGender = handleAPIGender(gender ?? 'X');
-    
     const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${profileUsername}.svg`;
 
     return (

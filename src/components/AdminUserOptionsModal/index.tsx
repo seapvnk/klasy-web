@@ -25,7 +25,7 @@ const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ username,
                     </figure>
                 </li>
                 <li className="menu-item tile-content">
-                    <h3>{username}</h3>
+                    <h3>{ username }</h3>
                     <p>tipo: {adorn}</p>
 
                     <div style={{marginBottom: '15px'}}>
