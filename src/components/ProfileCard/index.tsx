@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminUserOptionsModal from '../AdminUserOptionsModal';
 import ProfileBadge from '../ProfileBadge';
 
@@ -9,10 +9,12 @@ interface ProfileCardProps {
     username: string;
     type: string;
     bio: string;
-    gender?: string;
+    id: number;
+    gender: string;
+    onRemove?: Function;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gender, onRemove }) => {
     
     const profileTileStyle = {
         backgroundColor: '#fff',
@@ -28,22 +30,27 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }
     // Component states, mutable by edit functionality in AdminUserOptionsModal
     const [ profileUsername, setUsername ] = useState(username);
     const [ profileBio, setBio ] = useState(bio);
-    const [ nameInitials, setNameInitials ] = useState(getInitials(profileUsername));
+    let nameInitials = getInitials(profileUsername);
 
     // Handle editing
     type ProfileFormUpdate = any;
-    
+
     function handleEditing( [ username, bio ]: ProfileFormUpdate  ) {
         setUsername(username);
         setBio(bio)
-        setNameInitials(getInitials(profileUsername));
     }
+
+    useEffect(() => {
+        username = profileUsername;
+        bio = profileBio;
+        nameInitials = getInitials(profileUsername)
+    }, [profileUsername, profileBio])
 
     // Profile Picture request, according username.
     const profilePicAPI = 'https://avatars.dicebear.com/api';
     const profileType = handleProfileType(type);
     const profilePicAPIGender = handleAPIGender(gender ?? 'X');
-    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${profileUsername}.svg`;
+    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${username}.svg`;
 
     return (
         <div style={profileTileStyle} className="tile">
@@ -53,27 +60,29 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ username, type, bio, gender }
                         <img 
                             className="bg-gray"
                             src={userProfileURL} 
-                            alt={profileUsername}
+                            alt={username}
                         />    
                     </figure>
                 </div>
             </div>
             <div className="tile-content">
                 <p className="tile-title">
-                    <span className="text-bold">{ profileUsername }</span>
+                    <span className="text-bold">{ username }</span>
                     <ProfileBadge type={profileType} /> 
                 </p>
-                <p className="tile-subtitle">{profileBio}</p>
+                <p className="tile-subtitle">{bio}</p>
                 <div className="tile-action">
                     <button className="btn btn-primary">Ver perfil</button>
                     <span style={{marginRight: '5px'}}></span>
                     <AdminUserOptionsModal
                         formSubmit={{
                             submitFunction: handleEditing,
-                            submitFunctionsArgs: ({ username: profileUsername, bio: profileBio }),
+                            submitFunctionsArgs: ({ username, bio}),
                         }}
-                        username={profileUsername}
-                        bio={profileBio}
+                        id={id}
+                        username={username}
+                        bio={bio}
+                        removeFunction={onRemove}
                         profilePictureURL={userProfileURL}
                         nameInitials={nameInitials}
                         adorn={( <ProfileBadge type={profileType} /> )}
