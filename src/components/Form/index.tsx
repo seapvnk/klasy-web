@@ -24,7 +24,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessageSubmitButtonColor, onSubmitForm }) => {
-    const [ formValues, setFormValues ] = useState(fields);
+    const formValues = fields;
     
     // Handle submit function
     function handleFormSubmit(event: any) {
