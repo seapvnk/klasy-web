@@ -36,12 +36,12 @@ const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessag
 
     // Update form state
     function handleValueChange(index: number, updatedValue: string) {
-      setFormValues(formValues.map((field, fieldIndex) => {
+      return formValues.map((field, fieldIndex) => {
         if (index === fieldIndex) {
           field.value = updatedValue;
         }
         return field;
-      }));
+      });
     }
 
     return (
