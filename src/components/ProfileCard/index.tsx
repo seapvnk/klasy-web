@@ -12,9 +12,10 @@ interface ProfileCardProps {
     id: number;
     gender: string;
     onRemove?: Function;
+    handleEdit?: Function;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gender, onRemove }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gender, onRemove, handleEdit }) => {
     
     const profileTileStyle = {
         backgroundColor: '#fff',
@@ -38,13 +39,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
     function handleEditing( [ username, bio ]: ProfileFormUpdate  ) {
         setUsername(username);
         setBio(bio)
+        if (handleEdit) {
+            handleEdit(id, username, bio);
+        }
     }
 
-    useEffect(() => {
-        username = profileUsername;
-        bio = profileBio;
-        nameInitials = getInitials(profileUsername)
-    }, [profileUsername, profileBio])
+    
+    useEffect(() => {}, [profileBio, profileUsername]);
 
     // Profile Picture request, according username.
     const profilePicAPI = 'https://avatars.dicebear.com/api';
@@ -70,7 +71,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
                     <span className="text-bold">{ username }</span>
                     <ProfileBadge type={profileType} /> 
                 </p>
-                <p className="tile-subtitle">{bio}</p>
+                <p className="tile-subtitle">{ profileBio }</p>
                 <div className="tile-action">
                     <button className="btn btn-primary">Ver perfil</button>
                     <span style={{marginRight: '5px'}}></span>
@@ -80,8 +81,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
                             submitFunctionsArgs: ({ username, bio}),
                         }}
                         id={id}
-                        username={username}
-                        bio={bio}
+                        username={profileUsername}
+                        bio={profileBio}
                         removeFunction={onRemove}
                         profilePictureURL={userProfileURL}
                         nameInitials={nameInitials}

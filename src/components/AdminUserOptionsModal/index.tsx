@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import React, { ReactElement, useEffect, useState } from "react"
 import Modal from "../Modal"
 import Form, { FormSubmitProps } from "../Form";
 
@@ -13,12 +13,13 @@ interface AdminUserOptionsModalProps {
     adorn?: ReactElement;
 }
 
-const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ id, username, bio, formSubmit, adorn, profilePictureURL, nameInitials, removeFunction }) => {
+const AdminUserOptionsModal: React.FC<AdminUserOptionsModalProps> = ({ username, bio, formSubmit, adorn, profilePictureURL, nameInitials, removeFunction }) => {
     function handleDeleteUser() {
         if (removeFunction) {
             removeFunction();
         }
     }
+
     
     return (
         <Modal openModalButtonTitle="Opções" title={`Opções para o usuário ${username}`}>
