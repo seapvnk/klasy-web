@@ -7,6 +7,7 @@ import AdminManageClasses from '../admin/AdminManageClasses';
 function AdminRoutes() {
     return (
         <BrowserRouter>
+            <Route exact path='/admin' component={AdminManagePeople}/>
             <Route path='/admin/pessoas/:page?' component={AdminManagePeople}/>
             <Route path='/admin/turmas/:page?' component={AdminManageClasses}/>
         </BrowserRouter>
