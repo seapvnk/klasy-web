@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import AdminUserOptionsModal from '../AdminUserOptionsModal';
 import ProfileBadge from '../ProfileBadge';
 
@@ -26,27 +26,17 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
     }
 
     // transform username in it's initials to create a placeholder in case of image fail to load
-    const getInitials = ( name: string ) => name.split(' ').map(name => name.charAt(0)).join('');
-    
-    // Component states, mutable by edit functionality in AdminUserOptionsModal
-    const [ profileUsername, setUsername ] = useState(username);
-    const [ profileBio, setBio ] = useState(bio);
-    let nameInitials = getInitials(profileUsername);
+    let nameInitials = username.split(' ').map(name => name.charAt(0)).join('');
 
     // Handle editing
     type ProfileFormUpdate = any;
 
     function handleEditing( [ username, bio ]: ProfileFormUpdate  ) {
-        setUsername(username);
-        setBio(bio)
         if (handleEdit) {
             handleEdit(id, username, bio);
         }
     }
-
     
-    useEffect(() => {}, [profileBio, profileUsername]);
-
     // Profile Picture request, according username.
     const profilePicAPI = 'https://avatars.dicebear.com/api';
     const profileType = handleProfileType(type);
@@ -71,7 +61,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
                     <span className="text-bold">{ username }</span>
                     <ProfileBadge type={profileType} /> 
                 </p>
-                <p className="tile-subtitle">{ profileBio }</p>
+                <p className="tile-subtitle">{ bio }</p>
                 <div className="tile-action">
                     <button className="btn btn-primary">Ver perfil</button>
                     <span style={{marginRight: '5px'}}></span>
@@ -81,8 +71,8 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
                             submitFunctionsArgs: ({ username, bio}),
                         }}
                         id={id}
-                        username={profileUsername}
-                        bio={profileBio}
+                        username={username}
+                        bio={bio}
                         removeFunction={onRemove}
                         profilePictureURL={userProfileURL}
                         nameInitials={nameInitials}

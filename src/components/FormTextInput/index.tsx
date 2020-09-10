@@ -7,9 +7,9 @@ const FormTextInput: React.FC<FormFields> = ({ name, label, placeholder, value, 
     
     function handleChange(newValue: string) {
         if (onChangeFormValue) {
-            onChangeFormValue(fieldIndex, newValue)
+            onChangeFormValue(fieldIndex, newValue);
         }
-        setFormValue(newValue)
+        setFormValue(newValue);
     }
 
     return (
