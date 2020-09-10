@@ -1,7 +1,6 @@
 import React from 'react';
 import AdminUserOptionsModal from '../AdminUserOptionsModal';
 import ProfileBadge from '../ProfileBadge';
-
 import handleProfileType from './handleProfileType';
 import handleAPIGender from './handleAPIGender';
  
@@ -29,9 +28,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
     let nameInitials = username.split(' ').map(name => name.charAt(0)).join('');
 
     // Handle editing
-    type ProfileFormUpdate = any;
+    type ProfileUpdateForm = any;
 
-    function handleEditing( [ username, bio ]: ProfileFormUpdate  ) {
+    function handleEditing( [ username, bio ]: ProfileUpdateForm  ) {
         if (handleEdit) {
             handleEdit(id, username, bio);
         }
