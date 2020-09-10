@@ -25,7 +25,7 @@ const EmployeePage: React.FC<EmployeePageProps> = ({ employeeType, sections, cur
                         sections.map(section => {
                             const isCurrentSection = section !== sections[0];
                             const employeeAreaHome = `/${employeeType}/${sections[0]}`;
-                            const employeeAreaTab = `/${employeeType}/${section.toLowerCase()}`;
+                            const employeeAreaTab = `/${employeeType}/${section}`;
 
                             return (
                                 <li key={`li-${employeeType}-${section}`} className="tab-item">
