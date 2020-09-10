@@ -56,7 +56,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
 
         // Clear operation command.
         setOperation(UpdateOperation.noOperation);
-    }, [ operation ] );
+    }, [ operation, operationData.bio, operationData.username, operationData.id, profilesData ] );
 
     return (
         <PaginationList link="Admin/Pessoas" numberOfPages={numberOfPages}>
