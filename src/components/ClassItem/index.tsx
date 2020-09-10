@@ -4,12 +4,25 @@ import Form from '../Form';
 import AdminClassOptionsModal from '../AdminClassOptionsModal';
 
 interface ClassItemProps {
+    id: number;
     title: string;
     subtitle?: string;
     description?: string;
+    onRemove?: Function;
+    handleEdit?: Function
 }
 
-const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) => {
+const ClassItem: React.FC<ClassItemProps> = ({ id, title, description, subtitle, onRemove, handleEdit }) => {
+    
+    // Handle editing
+    type ClassUpdateForm = any;
+
+    function handleEditing( [ title, subtitle, description ]: ClassUpdateForm  ) {
+        if (handleEdit) {
+            handleEdit(id, title, subtitle, description);
+        }
+    }
+
     return (
         <div className="card" style={{maxWidth: '100%', marginBottom: '1rem'}}>
             <div className="card-header">
@@ -36,9 +49,16 @@ const ClassItem: React.FC<ClassItemProps> = ({ title, description, subtitle }) =
                 <span style={{marginRight: '5px'}}></span>
                 
                 <AdminClassOptionsModal
+                    key={id}
+                    formSubmit={{
+                        submitFunction: handleEditing,
+                        submitFunctionsArgs: ({ title, subtitle, description}),
+                    }}
+                    removeFunction={onRemove}
                     title={title} 
                     subtitle={subtitle ?? ''} 
                     description={description ?? ''}
+
                 />
             </div>
         </div>

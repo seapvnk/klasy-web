@@ -13,7 +13,6 @@ interface ProfileListProps {
 
 const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) => {
     const [profilesData, setProfileData] = useState(profiles);
-
     const [operation, setOperation] = useState(UpdateOperation.noOperation);
     const [operationData, setOperationData] = useState({
         username: '',
