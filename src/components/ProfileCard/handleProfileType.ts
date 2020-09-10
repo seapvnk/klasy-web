@@ -1,4 +1,4 @@
-import Profile from './profile';
+import Profile from '../../utils/Profile';
 
 const handleProfileType = (profileType: string) => {
     switch (profileType.toLowerCase()) {

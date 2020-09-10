@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from '../ProfileCard/profile';
+import Profile from '../../utils/Profile';
 
 interface ProfileBadgeProps {
     type: Profile;

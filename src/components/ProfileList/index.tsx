@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ProfileCard, { ProfileCardProps } from '../ProfileCard';
 import PaginationList from '../PaginationList';
-import Profile from '../ProfileCard/profile';
+import Profile from '../../utils/Profile';
+import { updateOperationDeleteProfile, updateOperationEditProfile } from './updateFunctions';
+import UpdateOperation from '../../utils/UpdateOperation';
 
 interface ProfileListProps {
     profiles: Array<ProfileCardProps>;
     numberOfPages: number;
-}
-
-enum UpdateOperation {
-    noOperation,
-    Edit,
-    Delete,
 }
 
 
@@ -27,15 +23,9 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
         gender: '?',
     });
 
-    const deleteProfile = (id: number) => {
-        setOperation(UpdateOperation.Delete);
-        setOperationData({id, username: '', type: Profile.Unknown, bio: '', gender: '?'})
-    }
-    
-    const editProfile = (id: number, username: string, bio: string) => {
-        setOperation(UpdateOperation.Edit);
-        setOperationData({id, username, bio, type: Profile.Unknown, gender: '?'});
-    }
+    // Update functions
+    const deleteProfile = updateOperationDeleteProfile(setOperation, setOperationData);    
+    const editProfile = updateOperationEditProfile(setOperation, setOperationData);    
 
     useEffect(() => {
         // Check for deletions.
