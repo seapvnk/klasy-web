@@ -16,7 +16,8 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPage }) => {
 
   const fullscreen = {
-    height: '100vh',
+    minHeight: '100vh',
+    paddingBottom: '1em',
   };
   
   const pageBody = {
