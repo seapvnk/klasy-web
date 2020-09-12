@@ -40,11 +40,13 @@ const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessag
     return (
             <form style={styles?? {} } onSubmit={handleFormSubmit}>
               {
-                fields.map(({ name, label, placeholder }, index) => {
+                fields.map(({ name, label, placeholder, type, options }, index) => {
                   return (
                     <FormField
                       key={index}
                       fieldIndex={index}
+                      type={type}
+                      options={options}
                       name={name}
                       label={label}
                       placeholder={placeholder}

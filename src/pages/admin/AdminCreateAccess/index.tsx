@@ -20,7 +20,7 @@ function AdminManageClasses() {
                             ],
                         }},
                         {label: "Quantidade", name: "quantity", placeholder: "Limite de uso", type: 'number', options: {
-                            min: 0,
+                            min: 1,
                         }},
                     ]}
                     buttonMessage="Gerar chave"
