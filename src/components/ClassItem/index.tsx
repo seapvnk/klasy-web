@@ -35,14 +35,14 @@ const ClassItem: React.FC<ClassItemProps> = ({ id, title, description, subtitle,
             <div className="card-footer">
                 <Modal
                     title={`Inserir professor na turma "${title}"`}
-                    openModalButtonTitle="Novo professor"
+                    openModalButtonTitle="Adicionar professor"
                     openModalButtonClass="primary"
                 >
                     <Form
                         fields={[
-                            {label: 'Professor', placeholder: 'nome',  name: 'materia'}
+                            {label: 'Professor', placeholder: 'Insira o login do professor',  name: 'materia', type: 'number'}
                         ]}
-                        buttonMessage="Novo professor"
+                        buttonMessage="Adicionar"
                     />
                 </Modal>
 
