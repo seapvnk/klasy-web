@@ -1,14 +1,7 @@
 import React, { CSSProperties } from 'react';
-import FormTextInput from '../FormTextInput';
+import FormField, {FormFieldProps} from '../FormField';
 
-interface FormFields {
-    label: string;
-    name: string;
-    placeholder?: string;
-    value?: string;
-    fieldIndex?: number;
-    onChangeFormValue?: Function;
-}
+
 
 interface FormSubmitProps {
   submitFunction: Function;
@@ -16,7 +9,7 @@ interface FormSubmitProps {
 }
 
 interface FormProps {
-    fields: Array<FormFields>;
+    fields: Array<FormFieldProps>;
     buttonMessage: string;
     styles?: CSSProperties;
     buttonMessageSubmitButtonColor?: string;
@@ -30,7 +23,7 @@ const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessag
     function handleFormSubmit(event: any) {
       event.preventDefault();
       if (onSubmitForm) {
-        onSubmitForm.submitFunction(formValues.map(( { value }: FormFields) => value ));
+        onSubmitForm.submitFunction(formValues.map(( { value }: FormFieldProps) => value ));
       }
     }
 
@@ -49,7 +42,7 @@ const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessag
               {
                 fields.map(({ name, label, placeholder }, index) => {
                   return (
-                    <FormTextInput
+                    <FormField
                       key={index}
                       fieldIndex={index}
                       name={name}
@@ -72,5 +65,5 @@ const Form: React.FC<FormProps> = ({ buttonMessage, fields, styles, buttonMessag
     );
 }
 
-export type { FormFields, FormSubmitProps };
+export type { FormSubmitProps };
 export default Form;

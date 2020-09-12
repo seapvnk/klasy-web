@@ -2,12 +2,13 @@ import React from 'react';
 import 'spectre.css';
 
 import Navbar from '../Navbar';
-import Form, {FormFields} from '../Form';
+import Form from '../Form';
+import {FormFieldProps} from '../FormField';
 import { Link } from 'react-router-dom';
 
 interface LoginFormProps {
   title: string;
-  fields: Array<FormFields>
+  fields: Array<FormFieldProps>
   subtitle?: string;
   signUpPage?: boolean;
 }

@@ -1,7 +1,17 @@
-import { FormFields } from "../Form";
 import React, { useState } from "react";
 
-const FormTextInput: React.FC<FormFields> = ({ name, label, placeholder, value, onChangeFormValue, fieldIndex }) => {
+interface FormFieldProps {
+    label: string;
+    name: string;
+    placeholder?: string;
+    value?: string;
+    fieldIndex?: number;
+    onChangeFormValue?: Function;
+    type?: string;
+    options?: any;
+}
+
+const FormField: React.FC<FormFieldProps> = ({ name, label, placeholder, value, onChangeFormValue, fieldIndex }) => {
 
     const [ formValue, setFormValue ] = useState(value);
     
@@ -31,4 +41,5 @@ const FormTextInput: React.FC<FormFields> = ({ name, label, placeholder, value, 
     );
 }
 
-export default FormTextInput;
+export type {FormFieldProps};
+export default FormField;
