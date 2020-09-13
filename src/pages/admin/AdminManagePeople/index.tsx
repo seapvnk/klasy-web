@@ -16,13 +16,11 @@ function AdminManagePeople() {
                         username: "Typescript GOD", 
                         bio: "Teaching typescript since 1999",
                         type: "Professor",
-                        gender: 'not given',
                     },
                     {
                         id: 2,
                         username: "seapvnk", 
                         bio: "Keep failing...",
-                        gender: 'male',
                         type: "Aluno",
                     },
                     {
@@ -30,13 +28,11 @@ function AdminManagePeople() {
                         username: "jsIsBad", 
                         bio: "idk, just here 'cause js is bad",
                         type: "Aluno",
-                        gender: 'not given',
                     },
                     {
                         id: 4,
                         username: "Jannet Doe", 
                         bio: "React teacher! I love to learn & code",
-                        gender: 'female',
                         type: "Professor",
                     },
                 ]}

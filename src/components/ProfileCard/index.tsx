@@ -2,19 +2,17 @@ import React from 'react';
 import AdminUserOptionsModal from '../AdminUserOptionsModal';
 import ProfileBadge from '../ProfileBadge';
 import handleProfileType from './handleProfileType';
-import handleAPIGender from './handleAPIGender';
  
 interface ProfileCardProps {
     username: string;
     type: string;
     bio: string;
     id: number;
-    gender: string;
     onRemove?: Function;
     handleEdit?: Function;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gender, onRemove, handleEdit }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, onRemove, handleEdit }) => {
     
     const profileTileStyle = {
         backgroundColor: '#fff',
@@ -39,8 +37,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ id, username, type, bio, gend
     // Profile Picture request, according username.
     const profilePicAPI = 'https://avatars.dicebear.com/api';
     const profileType = handleProfileType(type);
-    const profilePicAPIGender = handleAPIGender(gender ?? 'X');
-    const userProfileURL = `${profilePicAPI}/${profilePicAPIGender}/${username}.svg`;
+    const userProfileURL = `${profilePicAPI}/identicon/${username}.svg`;
 
     return (
         <div style={profileTileStyle} className="tile">

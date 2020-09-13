@@ -19,7 +19,6 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
         type: Profile.Unknown,
         bio: '',
         id: -1,
-        gender: '?',
     });
 
     // Update functions
@@ -50,7 +49,7 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
     return (
         <PaginationList link="Admin/Pessoas" numberOfPages={numberOfPages}>
             {
-                profilesData.map( ({id, username, bio, type, gender}, index) => {
+                profilesData.map( ({ id, username, bio, type }, index) => {
                     return (
                         <ProfileCard
                             id={id}
@@ -58,7 +57,6 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
                             username={username}
                             bio={bio}
                             type={type}
-                            gender={gender}
                             onRemove={() => deleteProfile(id)}
                             handleEdit={editProfile}
                         />
