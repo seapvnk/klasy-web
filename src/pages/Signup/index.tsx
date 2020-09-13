@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm';
 
-function SignUpForm() {
+function Signup() {
     return (
         <LoginForm 
             title="Cadastro"
@@ -18,4 +18,4 @@ function SignUpForm() {
     )
 }
 
-export default SignUpForm;
+export default Signup;

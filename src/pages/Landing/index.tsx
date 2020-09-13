@@ -38,16 +38,14 @@ function Landing() {
             </div>
 
             <div className="bg-light">
-              <Link to="/login-alunos" className="btn btn-lg">
-                  Sou aluno  
+              <Link to="/entrar" className="btn btn-lg">
+                  Entrar
               </Link>
 
-              <Link to="/login-funcionarios" className="btn btn-success btn-lg">
-                  Sou funcionário 
+              <Link to="/registro" className="btn btn-success btn-lg">
+                  Registrar 
               </Link>
             </div>
-            <br/>
-            <Link to="/cadastro" className="text-light">Não possui login? Obter acesso.</Link>
           </div>
         </div>
     </div>

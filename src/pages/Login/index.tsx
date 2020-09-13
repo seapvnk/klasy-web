@@ -1,11 +1,11 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm';
 
-function StudentForm() {
+function Login() {
     return (
         <LoginForm 
-            title="Alunos"
-            subtitle="Área destinada a alunos e pais"
+            title="Funcionários"
+            subtitle="Área destinada a funcionários da escola"
             fields={[
                 {label: 'Login', name: 'login'},
                 {label: 'Senha', name: 'password'},
@@ -14,4 +14,4 @@ function StudentForm() {
     )
 }
 
-export default StudentForm;
+export default Login;
