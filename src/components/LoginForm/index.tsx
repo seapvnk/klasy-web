@@ -4,6 +4,7 @@ import 'spectre.css';
 import Navbar from '../Navbar';
 import Form from '../Form';
 import {FormFieldProps} from '../FormField';
+import styles from './styles';
 import { Link } from 'react-router-dom';
 
 interface LoginFormProps {
@@ -14,26 +15,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPage }) => {
-
-  const fullscreen = {
-    minHeight: '100vh',
-    paddingBottom: '1em',
-  };
-  
-  const pageBody = {
-    display: 'flex',
-    flexFlow: 'column',
-    alignItems: 'center',
-  };
-  
-  const textLarge = {
-    fontSize: '2rem',
-    marginTop: '3rem',
-  }
-
-  const formStyle = {
-    width: '70%',
-  }
+  const { fullscreen, pageBody, formStyle, textLarge } = styles;
 
   return (
     <div style={fullscreen} className="bg-primary">
