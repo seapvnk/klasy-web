@@ -7,7 +7,7 @@ import { LoginFormProps } from './LoginFormProps';
 import styles from './styles';
 
 
-const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPage }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPage, onSubmitForm }) => {
   const { fullscreen, pageBody, formStyle, textLarge } = styles;
 
   return (
@@ -18,7 +18,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ title, fields, subtitle, signUpPa
             <h1 style={textLarge}>{title}</h1>
             <p className="text-muted">{subtitle}</p>
             
-            <Form 
+            <Form
+              onSubmitForm={onSubmitForm}
               buttonMessage={!signUpPage? "Entrar" : "Cadastrar"}
               fields={fields}
               styles={formStyle}
