@@ -7,7 +7,7 @@ function Signup() {
     async function handleSignup( [ key, name, bio, username, password ] : Array<string>) {
         api.post('user', { key, name, bio, username, password })
         .then((response) => {
-            if (response.status == 400) {
+            if (response.status === 400) {
                 // Account not created
                 alert('Chave inválida ou expirada');
             } else {
