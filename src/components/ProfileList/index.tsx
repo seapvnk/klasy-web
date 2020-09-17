@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import ProfileCard, { ProfileCardProps } from '../ProfileCard';
+import ProfileCard  from '../ProfileCard';
 import PaginationList from '../PaginationList';
 import Profile from '../../utils/Profile';
 import { updateOperationDeleteProfile, updateOperationEditProfile } from './updateFunctions';
 import UpdateOperation from '../../utils/UpdateOperation';
+import api from '../../services/api';
+
+interface UserProps {
+    id: number;
+    name: string;
+    username: string;
+    bio: string; 
+    type: string;
+}
 
 interface ProfileListProps {
-    profiles: Array<ProfileCardProps>;
     numberOfPages: number;
+    profiles: Array<UserProps>;
 }
 
 
@@ -20,28 +29,29 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
         bio: '',
         id: -1,
     });
-
+    
     // Update functions
     const deleteProfile = updateOperationDeleteProfile(setOperation, setOperationData);    
     const editProfile = updateOperationEditProfile(setOperation, setOperationData);    
-
+    
     useEffect(() => {
         // Check for deletions.
         if (operation === UpdateOperation.Delete) {
-            setProfileData(profilesData.filter(profile => profile.id !== operationData.id));
+            setProfileData(profilesData.filter((profile: UserProps) => profile.id !== operationData.id));
         }
-
+        
         // Check for editions.
         if (operation === UpdateOperation.Edit) {
-            setProfileData(profilesData.map(profile => {
+            setProfileData(profilesData.map((profile: UserProps) => {
                 if (profile.id === operationData.id) {
                     profile.username = operationData.username;
                     profile.bio = operationData.bio;
+                    const {id, username, bio} = operationData;
+                    api.put('users', {id, username, bio});
                 }
                 return profile;
             }));
         }
-
         // Clear operation command.
         setOperation(UpdateOperation.noOperation);
     }, [ operation, operationData.bio, operationData.username, operationData.id, profilesData ] );
@@ -49,11 +59,11 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
     return (
         <PaginationList link="Admin/Pessoas" numberOfPages={numberOfPages}>
             {
-                profilesData.map( ({ id, username, bio, type }, index) => {
+                profilesData.map( ({ id, username, bio, type }) => {
                     return (
                         <ProfileCard
                             id={id}
-                            key={index}
+                            key={id}
                             username={username}
                             bio={bio}
                             type={type}
@@ -66,5 +76,5 @@ const ProfileList: React.FC<ProfileListProps> = ({ profiles, numberOfPages }) =>
         </PaginationList>
     );
 } 
-
+export type {UserProps};
 export default ProfileList;
