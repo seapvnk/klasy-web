@@ -1,2 +1,2 @@
-# klasy-web
-Klasy app front-end
+# readism
+readism monorepo
