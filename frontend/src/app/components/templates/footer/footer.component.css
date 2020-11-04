@@ -1,0 +1,29 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    justify-content: flex-end;
+}
+
+.footer span {
+    font-weight: 300;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer span .material-icons {
+    color: #f06292;
+    font-size: 1rem;
+    margin: 0 5px;
+}
+
+.footer span .link {
+    text-decoration: none;
+    color: #f06292;
+    margin-left: 5px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
