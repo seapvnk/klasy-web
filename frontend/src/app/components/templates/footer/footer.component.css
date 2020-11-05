@@ -2,6 +2,7 @@
     position: fixed;
     bottom: 0;
     justify-content: flex-end;
+    z-index: 4;
 }
 
 .footer span {
