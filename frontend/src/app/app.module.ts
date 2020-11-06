@@ -20,6 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { BookAddComponent } from './components/book/book-add/book-add.component';
 import { FormsModule } from '@angular/forms';
+import { BookListComponent } from './components/book/book-list/book-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { BookUpdateComponent } from './components/book/book-update/book-update.component';
+import { BookDeleteComponent } from './components/book/book-delete/book-delete.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     BooksCrudComponent,
     BookAddComponent,
+    BookListComponent,
+    BookUpdateComponent,
+    BookDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

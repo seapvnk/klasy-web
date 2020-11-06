@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+}
+
+button {
+    margin: 5px;
+}
+
+.delete {
+    background-color: #d9c926;
+}
+
+.delete a {
+    color: #343434;
+}
+
+button a {
+    color: #ffffff;
+    font-size: 12px;
+    padding: .2rem;
+}

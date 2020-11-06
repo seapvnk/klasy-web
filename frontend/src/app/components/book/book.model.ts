@@ -1,5 +1,5 @@
 export default interface Book {
-    id?: number;
+    id?: string;
     name: string;
     location: string;
 }

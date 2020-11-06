@@ -1,14 +1,14 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "book title",
-      "location": "#"
+      "name": "Cool Book",
+      "location": "here1",
+      "id": 2
     },
     {
-      "name": "Cool Book",
-      "location": "here",
-      "id": 2
+      "name": "New book",
+      "location": "1",
+      "id": 3
     }
   ]
 }
