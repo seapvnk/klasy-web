@@ -1,14 +1,16 @@
 {
   "books": [
     {
-      "name": "Cool Book",
-      "location": "here1",
-      "id": 2
-    },
+      "name": "Brand new book",
+      "reward": 1900,
+      "id": 1
+    }
+  ],
+  "user": [
     {
-      "name": "New book",
-      "location": "1",
-      "id": 3
+      "score": "0",
+      "books": "0",
+      "id": 1
     }
   ]
 }

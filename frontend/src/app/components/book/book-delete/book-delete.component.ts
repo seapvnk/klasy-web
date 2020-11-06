@@ -9,6 +9,7 @@ import { BookService } from '../book.service';
   styleUrls: ['./book-delete.component.css']
 })
 export class BookDeleteComponent implements OnInit {
+  book: Book;
 
   constructor(private bookService: BookService,
               private router: Router,
@@ -16,10 +17,20 @@ export class BookDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    
-    this.bookService.delete(id).subscribe(() => {
+
+    this.bookService.readById(id).subscribe(book => {
+      this.book = book;
+    });
+
+  }
+  
+  delete(): void {
+    this.bookService.delete(this.book.id).subscribe(() => {
       this.router.navigate(['/book']);
     });
   }
 
+  cancel() :void {
+    this.router.navigate(['/book']);
+  }
 }

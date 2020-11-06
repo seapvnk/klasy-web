@@ -1,5 +1,5 @@
-export default interface Book {
+export interface Product {
     id?: string;
     name: string;
-    location: string;
+    reward: string;
 }

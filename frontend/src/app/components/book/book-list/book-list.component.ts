@@ -11,7 +11,7 @@ import { BookService } from '../book.service';
 export class BookListComponent implements OnInit {
 
   books: Book[];
-  displayedColumns: String[] = ['name', 'location', 'action'];
+  displayedColumns: String[] = ['name', 'reward', 'action'];
 
   constructor(private bookService: BookService,
               private router: Router) { }

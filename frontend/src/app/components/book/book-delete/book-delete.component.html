@@ -1,1 +1,11 @@
-<p>book-delete works!</p>
+<div class="mat-elevation-z4 container">
+    <h1>Delete book</h1>
+    <h2>Are you sure about delete this book?</h2>
+    <mat-card class="card">
+        <mat-card-title class="info">Book Info</mat-card-title>
+        <p>Name: {{ book.name }}</p>
+        <p>Reward: {{ book.reward }}</p>
+    </mat-card>
+    <button mat-raised-button (click)="delete()" color="warn">Yes, delete</button>
+    <button mat-raised-button (click)="cancel()">No, keep</button>
+</div>

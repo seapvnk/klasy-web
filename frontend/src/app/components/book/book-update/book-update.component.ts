@@ -13,7 +13,7 @@ export class BookUpdateComponent implements OnInit {
   book: Book = {
     id: "",
     name: "",
-    location: "",
+    reward: "",
   } 
 
   constructor(private bookService: BookService,
