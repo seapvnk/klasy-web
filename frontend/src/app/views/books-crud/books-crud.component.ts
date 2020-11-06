@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderService, HeaderData } from 'src/app/components/templates/header/header.service';
 
 @Component({
   selector: 'app-books-crud',
@@ -8,9 +9,16 @@ import { Router } from '@angular/router';
 })
 export class BooksCrudComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  headerData: HeaderData = {
+    icon: "books",
+    title: "Book List",
+  };
+
+  constructor(private route: Router,
+              private headerService: HeaderService) { }
 
   ngOnInit(): void {
+    this.headerService.updateHeader(this.headerData);
   }
 
   navigateToBookCreation(): void {

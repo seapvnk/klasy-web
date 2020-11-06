@@ -2,13 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { Product } from './book-add/book.model';
 import Book from './book.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BookService {
+export default class BookService {
 
   baseUrl = 'http://localhost:3030/books';
 

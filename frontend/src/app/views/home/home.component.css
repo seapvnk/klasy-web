@@ -3,3 +3,11 @@
     font-size: 2rem;
     margin-bottom: 1.4rem;
 }
+
+p {
+    margin: 0;
+}
+
+.title {
+    margin-bottom: 2rem;
+}

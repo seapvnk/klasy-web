@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Book from '../book.model';
-import { BookService } from '../book.service';
-import { UserService } from '../user.service';
-import { User } from '../user.model';
+import BookService from '../book.service';
+import User from '../user.model';
+import UserService from '../user.service';
 
 @Component({
   selector: 'app-book-delete',
