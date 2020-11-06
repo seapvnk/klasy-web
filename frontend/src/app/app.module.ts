@@ -9,11 +9,17 @@ import { FooterComponent } from './components/templates/footer/footer.component'
 import { NavComponent } from './components/templates/nav/nav.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatCardModule } from '@angular/material/card'
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './views/home/home.component';
 import { BooksCrudComponent } from './views/books-crud/books-crud.component'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { BookAddComponent } from './components/book/book-add/book-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import { BooksCrudComponent } from './views/books-crud/books-crud.component'
     FooterComponent,
     NavComponent,
     HomeComponent,
-    BooksCrudComponent
+    BooksCrudComponent,
+    BookAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +39,11 @@ import { BooksCrudComponent } from './views/books-crud/books-crud.component'
     MatSidenavModule,
     MatListModule,
     MatCardModule,
+    MatSnackBarModule,
+    HttpClientModule, 
+    MatButtonModule,
+    MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

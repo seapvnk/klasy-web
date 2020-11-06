@@ -1,8 +1,14 @@
 {
-    "books": [
-        {
-            "title": "book title",
-            "location": "#"
-        }
-    ]
+  "books": [
+    {
+      "id": 1,
+      "title": "book title",
+      "location": "#"
+    },
+    {
+      "name": "Cool Book",
+      "location": "here",
+      "id": 2
+    }
+  ]
 }

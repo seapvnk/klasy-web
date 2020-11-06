@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title>Novo Livro</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome"
+                [(ngModel)]="book.name" name="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Locatização"
+                [(ngModel)]="book.location" name="location">
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="addBook()" color="primary">
+        Salvar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>
