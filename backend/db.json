@@ -1,8 +1,8 @@
 {
   "books": [
     {
-      "name": "Brand new book",
-      "reward": 1900,
+      "name": "Starter book",
+      "reward": 100,
       "id": 1
     }
   ],

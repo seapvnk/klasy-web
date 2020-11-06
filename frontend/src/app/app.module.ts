@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BookUpdateComponent } from './components/book/book-update/book-update.component';
 import { BookDeleteComponent } from './components/book/book-delete/book-delete.component';
+import { BookCheckComponent } from './components/book/book-check/book-check.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BookDeleteComponent } from './components/book/book-delete/book-delete.c
     BookListComponent,
     BookUpdateComponent,
     BookDeleteComponent,
+    BookCheckComponent,
   ],
   imports: [
     BrowserModule,

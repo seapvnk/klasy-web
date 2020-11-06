@@ -6,8 +6,8 @@
                 [(ngModel)]="book.name" name="name">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Location"
-                [(ngModel)]="book.location" name="location">
+            <input matInput placeholder="Reward"
+                [(ngModel)]="book.reward" type="number" step="100" name="location">
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="addBook()" color="primary">

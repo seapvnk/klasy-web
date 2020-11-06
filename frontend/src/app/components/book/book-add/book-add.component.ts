@@ -12,7 +12,7 @@ export class BookAddComponent implements OnInit {
 
   book: Book = {
     name: "",
-    location: "",
+    reward: "",
   }
 
   constructor(private bookService: BookService,
@@ -25,7 +25,7 @@ export class BookAddComponent implements OnInit {
     this.bookService.create(this.book).subscribe(() => {
       this.bookService.showMessage("Book added");
       this.book.name = "";
-      this.book.location = "";
+      this.book.reward = "";
     });
   }
 

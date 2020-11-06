@@ -1,0 +1,11 @@
+<div class="mat-elevation-z4 container">
+    <h1>Delete book</h1>
+    <h2>Are you sure about mark this book as read?</h2>
+    <mat-card class="card">
+        <mat-card-title class="info">Book Info</mat-card-title>
+        <p>Name: {{ book.name }}</p>
+        <p>Reward: {{ book.reward }}</p>
+    </mat-card>
+    <button mat-raised-button (click)="check()" class="success">Yes, i has read this book</button>
+    <button mat-raised-button (click)="cancel()">No, i didn't read this book yet</button>
+</div>
